@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  db:
+    build:
+      context: context-db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - admin-mysql_default
+  
+  graphgame:
+    depends_on:
+      - "db"
+    build:
+      context: context-graphgame
+    ports:
+      - "443:443"
+      - "80:80"
+      - "8080:8080"
+    restart: always
+    networks:
+      - admin-mysql_default
+
+networks:
+  admin-mysql_default:
+    external:
+      name: admin-mysql_default
+

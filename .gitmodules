@@ -1,0 +1,6 @@
+[submodule "ui"]
+	path = ui
+	url = https://github.com/jakubbedra/graphgame-ui.git
+[submodule "server"]
+	path = server
+	url = https://github.com/jakubbedra/graphgame.git
